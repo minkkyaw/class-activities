@@ -16,7 +16,7 @@
         width: 50%;
         padding: 20px;
         margin: 5rem auto 0;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-style: fantasy;
         justify-items: center;
         border-radius: 20px;
@@ -28,11 +28,19 @@
         margin: 0 auto;
     }
 
+    #default {
+        font-size: 2rem;
+    }
+
+    span {
+        color: #f55d5d;
+    }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <p id="default">press 'r', 'p' or 's'.</p>
+        <p id="default">Press <span>'r' for Rock</span>, <span>'p' for Paper</span>, or <span>'s' for Scissors</span>.</p>
         <p id="playerChoice"></p>
         <p id="comChoice"></p>
         <p id="win"></p>
