@@ -1,40 +1,27 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-
-    <title>About Me</title>
-    <link rel="stylesheet" href="css/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-
 <body>
-    <header class='masthead'>
-        <p class='masthead-intro'>Hi I'm</p>
-        <h1 class='masthead-heading'>Min Khant Kyaw</h1>
-    </header>
-    <section class="details">
-      <h1>Introduction</h1>
-      <p>I am an engineer.</p>
-      <h1>Where I'm From</h1>
-      <p>Myanmar</p>
-      <h1>What are your favorite hobbies?</h1>
-      <p>Playing billard and watching youtube</p>
-      <h1>What's your dream job?</h1>
-      <p>Software developer</p>
-      <h1>Where do you live?</h1>
-      <p>South Philadelphia</p>
-      <h1>Why do you want to be a web developer?</h1>
-      <p>I like to create awesome apps and websites</p>
-    </section>
-
-    <footer id="footer">
-        <ul class="social">
-          <li><a href="http://www.github.com/usernamehere">Github</a></li>
-        </ul>
-    </footer>
+    <script>
+    
+    var userBirthday = prompt("What is your birthday?");
+    if(2019 - userBirthday > 21) {
+        document.write("No sake");
+    } else {
+    var eatSteak = confirm("Do you eat steak?");
+    if(eatSteak) {
+        document.write("Here's a Steak Sandwich!");
+    } 
+    else {
+        document.write("Here's a Tofu Stir-Fry!");
+    }
+    }
+    
+    </script>
 </body>
-
 </html>

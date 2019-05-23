@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock-Paper-Scissors</title>
+    <style>
+    body {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .container {
+        color: #466ca7;
+        width: 50%;
+        padding: 20px;
+        margin: 5rem auto 0;
+        font-size: 2rem;
+        font-style: fantasy;
+        justify-items: center;
+        border-radius: 20px;
+        box-shadow: 0px 0px 4px 1px rgba(92, 92, 92, 0.19);
+    }
+
+    p {
+        text-align: left;
+        margin: 0 auto;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="default">press 'r', 'p' or 's'.</p>
+        <p id="playerChoice"></p>
+        <p id="comChoice"></p>
+        <p id="win"></p>
+        <p id="draw"></p>
+        <p id="lose"></p>
+    </div>
+    
+    <script>
+        var userWin = 0;
+        var userDraw = 0;
+        var userLose = 0;
+
+        document.onkeyup = function(event) {
+            if ( event.key === "r" || event.key === "p" || event.key === "s") {
+                if(event.key ==="r") {
+                    var userChoice = "rock";
+                } else if (event.key === "p") {
+                    var userChoice = "paper";
+                } else {
+                    var userChoice = "scissors";
+                }
+                document.getElementById("default").innerHTML = " ";
+                document.getElementById("playerChoice").innerHTML = "Player choice: " + userChoice;   
+            
+                var computerChoice = ['rock', 'paper', 'scissors'];
+                var random = Math.floor(Math.random() * computerChoice.length);
+                console.log(random);
+                console.log(computerChoice[random]);
+                document.getElementById("comChoice").innerHTML = "Computer choice: " + computerChoice[random];
+                if(userChoice === "rock" && computerChoice[random] === "scissors" || userChoice === "paper" && computerChoice[random] === "rock" || userChoice === "scissors" && computerChoice[random] === "paper") {
+                        userWin++;
+                        
+                    } else if(userChoice === "rock" && computerChoice[random] === "rock" || userChoice === "paper" && computerChoice[random] === "paper" || userChoice === "scissors" && computerChoice[random] === "scissors") {
+                        userDraw++;
+                        
+                    } else {
+                        userLose++;
+                    }
+                    
+                    document.getElementById("win").innerHTML = "Win: " + userWin;
+                    document.getElementById("draw").innerHTML = "Draw: " + userDraw;
+                    document.getElementById("lose").innerHTML = "Lose: " + userLose;
+                }
+            }
+        
+
+
+    
+    </script>
+</body>
+</html>
