@@ -35,7 +35,38 @@
     span {
         color: #f55d5d;
     }
+    
+    #button {
+        display: none;
+    }
 
+    .btn {
+        font-size: 1rem;
+        color: #814444;
+        padding: .5rem;
+        width: 100px;
+        background:linear-gradient(30deg, #e4e2e2, #ace9e4);
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 0px 4px 1px rgba(180, 125, 125, 0.2);
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: linear-gradient(0deg, red, pink);
+        transition: background-color 2s ease-in;
+    }
+
+    .btn:focus {
+        outline: none;
+        border: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+        #button {
+            display: inline-block;
+        }
+    }
     </style>
 </head>
 <body>
@@ -46,21 +77,52 @@
         <p id="win"></p>
         <p id="draw"></p>
         <p id="lose"></p>
+        <div id="button">
+            <button id="btn-rock" class="btn"><img src="img/rock.png" alt="Rock"></button>
+            <button id="btn-paper" class="btn"><img src="img/paper.png" alt="Paper"></button>
+            <button id="btn-scissors" class="btn"><img src="img/scissors.png" alt="Scissors"></button>
+        </div>
     </div>
     
     <script>
         var userWin = 0;
         var userDraw = 0;
         var userLose = 0;
+        var userChoice = '';
+        document.getElementById("btn-rock").addEventListener("click", setR);
+        document.getElementById("btn-paper").addEventListener("click", setP);
+        document.getElementById("btn-scissors").addEventListener("click", setS);
 
+        function setR(e) {
+            console.log(e);
+            if(e.isTrusted) {
+                userChoice = 'r';
+            }
+            return userChoice;
+            console.log(e);
+        }
+        function setP(e) {
+            if(e.isTrusted) {
+                userChoice = 'p';
+            }
+            return userChoice;
+            console.log(userChoice);
+        }
+        function setS(e) {
+            if(e.isTrusted) {
+                userChoice = 's';
+            }
+            return userChoice;
+            console.log(userChoice);
+        }
         document.onkeyup = function(event) {
             if(event.key === "r" || event.key === "p" || event.key === "s") {
                 if(event.key ==="r") {
-                    var userChoice = "rock";
+                    userChoice = "rock";
                 } else if(event.key === "p") {
-                    var userChoice = "paper";
+                    userChoice = "paper";
                 } else {
-                    var userChoice = "scissors";
+                    userChoice = "scissors";
                 }
                 document.getElementById("default").innerHTML = " ";
                 document.getElementById("playerChoice").innerHTML = "Player choice: " + userChoice;   
@@ -85,8 +147,8 @@
                     document.getElementById("lose").innerHTML = "Lose: " + userLose;
                 }
             }
-        
 
+        
 
     
     </script>
