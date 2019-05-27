@@ -72,8 +72,8 @@
 <body>
     <div class="container">
         <p id="default">Press <span>'r' for Rock</span>, <span>'p' for Paper</span>, or <span>'s' for Scissors</span>.</p>
-        <p id="playerChoice"></p>
-        <p id="comChoice"></p>
+        <p id="playerChoice" class="player-choice"></p>
+        <p id="comChoice" class="com-choice"></p>
         <p id="win"></p>
         <p id="draw"></p>
         <p id="lose"></p>
@@ -92,7 +92,7 @@
         const btnRock = document.getElementById('rock');
         const btnPaper = document.getElementById('paper');
         const btnScissors = document.getElementById('scissors');
-        const button = document.querySelector('button');
+        const button = document.getElementById('button');
         
         // const setR = function() {
         //     userChoice = 'rock';
@@ -109,10 +109,10 @@
         //     return userChoice;
         // }
         
-        document.onmousedown = e => {
+        button.onmousedown = e => {
             document.getElementById("default").innerHTML = " ";
             btnRock.addEventListener('click', function() {
-            userChoice = 'rock';
+            userChoice = url('./images/rock.png');
             document.getElementById("playerChoice").innerHTML = "Player choice: " + userChoice;
         });
 
