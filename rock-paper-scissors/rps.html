@@ -78,9 +78,9 @@
         <p id="draw"></p>
         <p id="lose"></p>
         <div id="button">
-            <button id="btn-rock" class="btn"><img src="img/rock.png" alt="Rock"></button>
-            <button id="btn-paper" class="btn"><img src="img/paper.png" alt="Paper"></button>
-            <button id="btn-scissors" class="btn"><img src="img/scissors.png" alt="Scissors"></button>
+            <button id="rock" class="btn"><img src="img/rock.png" alt="Rock"></button>
+            <button id="paper" class="btn"><img src="img/paper.png" alt="Paper"></button>
+            <button id="scissors" class="btn"><img src="img/scissors.png" alt="Scissors"></button>
         </div>
     </div>
     
@@ -89,32 +89,60 @@
         var userDraw = 0;
         var userLose = 0;
         var userChoice = '';
-        document.getElementById("btn-rock").addEventListener("click", setR);
-        document.getElementById("btn-paper").addEventListener("click", setP);
-        document.getElementById("btn-scissors").addEventListener("click", setS);
+        const btnRock = document.getElementById('rock');
+        const btnPaper = document.getElementById('paper');
+        const btnScissors = document.getElementById('scissors');
+        const button = document.querySelector('button');
+        
+        // const setR = function() {
+        //     userChoice = 'rock';
+        //     return userChoice;
+        // }
 
-        function setR(e) {
-            console.log(e);
-            if(e.isTrusted) {
-                userChoice = 'r';
-            }
-            return userChoice;
-            console.log(e);
+        // const setP = function() {
+        //     userChoice = 'paper';
+        //     return userChoice;
+        // }
+
+        // const setS = function() {
+        //     userChoice = 'scissors';
+        //     return userChoice;
+        // }
+        
+        document.onmousedown = e => {
+            document.getElementById("default").innerHTML = " ";
+            btnRock.addEventListener('click', function() {
+            userChoice = 'rock';
+            document.getElementById("playerChoice").innerHTML = "Player choice: " + userChoice;
+        });
+
+        btnPaper.addEventListener('click', function() {
+            userChoice = 'paper';
+            document.getElementById("playerChoice").innerHTML = "Player choice: " + userChoice;
+        });
+
+        btnScissors.addEventListener('click', function() {
+            userChoice = 'scissors';
+            document.getElementById("playerChoice").innerHTML = "Player choice: " + userChoice;
+        });
+            var computerChoice = ['rock', 'paper', 'scissors'];
+            var random = Math.floor(Math.random() * computerChoice.length);
+            document.getElementById("comChoice").innerHTML = "Computer choice: " + computerChoice[random];
+            if(userChoice === "rock" && computerChoice[random] === "scissors" || userChoice === "paper" && computerChoice[random] === "rock" || userChoice === "scissors" && computerChoice[random] === "paper") {
+                    userWin++;
+                    
+                } else if(userChoice === "rock" && computerChoice[random] === "rock" || userChoice === "paper" && computerChoice[random] === "paper" || userChoice === "scissors" && computerChoice[random] === "scissors") {
+                    userDraw++;
+                    
+                } else {
+                    userLose++;
+                }
+                
+                document.getElementById("win").innerHTML = "Win: " + userWin;
+                document.getElementById("draw").innerHTML = "Draw: " + userDraw;
+                document.getElementById("lose").innerHTML = "Lose: " + userLose;
         }
-        function setP(e) {
-            if(e.isTrusted) {
-                userChoice = 'p';
-            }
-            return userChoice;
-            console.log(userChoice);
-        }
-        function setS(e) {
-            if(e.isTrusted) {
-                userChoice = 's';
-            }
-            return userChoice;
-            console.log(userChoice);
-        }
+
         document.onkeyup = function(event) {
             if(event.key === "r" || event.key === "p" || event.key === "s") {
                 if(event.key ==="r") {
@@ -129,8 +157,6 @@
             
                 var computerChoice = ['rock', 'paper', 'scissors'];
                 var random = Math.floor(Math.random() * computerChoice.length);
-                console.log(random);
-                console.log(computerChoice[random]);
                 document.getElementById("comChoice").innerHTML = "Computer choice: " + computerChoice[random];
                 if(userChoice === "rock" && computerChoice[random] === "scissors" || userChoice === "paper" && computerChoice[random] === "rock" || userChoice === "scissors" && computerChoice[random] === "paper") {
                         userWin++;
