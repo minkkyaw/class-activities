@@ -12,8 +12,9 @@
     }
 
     .container {
+        height: 300px;
+        width: 500px;
         color: #466ca7;
-        width: 50%;
         padding: 20px;
         margin: 5rem auto 0;
         font-size: 1.5rem;
@@ -21,10 +22,11 @@
         justify-items: center;
         border-radius: 20px;
         box-shadow: 0px 0px 4px 1px rgba(92, 92, 92, 0.19);
+        position: relative;
     }
 
     p {
-        text-align: left;
+        text-align: center;
         margin: 0 auto;
     }
 
@@ -38,6 +40,9 @@
     
     #button {
         display: none;
+        position: absolute;
+        bottom: 2rem;
+        margin: 0 100px;
     }
 
     .btn {
@@ -50,11 +55,11 @@
         border-radius: 10px;
         box-shadow: 0px 0px 4px 1px rgba(180, 125, 125, 0.2);
         cursor: pointer;
+        transition: all 2s ease;
     }
 
     .btn:hover {
-        background-color: linear-gradient(0deg, red, pink);
-        transition: background-color 2s ease-in;
+        background: linear-gradient(0deg, red, pink);
     }
 
     .btn:focus {
@@ -62,25 +67,69 @@
         border: none;
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1366px) {
         #button {
             display: inline-block;
+        }
+
+        .img-default {
+            display: inline-block;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .container {
+            width: 86vw;
+            height: 86vh;
+            margin: 3vh auto;
+            padding: 4vh 4vw;
+        }
+
+        #button {
+            position: absolute;
+            bottom: 2vh;
+            margin: 0 5.5vw;
+        }
+
+        .btn {
+            padding: 0;
+            width: 25vw;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .container {
+            width: 86vw;
+            height: 86vh;
+            margin: 3vh auto;
+            padding: 4vh 4vw;
+        }
+
+        #button {
+            position: absolute;
+            bottom: 2vh;
+            margin: 0 3.5vw;
+        }
+
+        .btn {
+            padding: 0;
+            width: 25vw;
         }
     }
     </style>
 </head>
 <body>
     <div class="container">
-        <p id="default">Press <span>'r' for Rock</span>, <span>'p' for Paper</span>, or <span>'s' for Scissors</span>.</p>
+        <p id="default">Press <span>'r' or '<img class="img-default" src="img/rock.png" alt="Rock">' for Rock</span>, <span>'p' or '<img class="img-default" src="img/paper.png" alt="Paper">' for Paper</span>, or <span>'s' or '<img class="img-default" src="img/scissors.png" alt="Scissors">' for Scissors</span>.</p>
         <p id="playerChoice" class="player-choice"></p>
         <p id="comChoice" class="com-choice"></p>
         <p id="win"></p>
         <p id="draw"></p>
         <p id="lose"></p>
         <div id="button">
-            <button id="rock" class="btn"><img src="img/rock.png" alt="Rock"></button>
-            <button id="paper" class="btn"><img src="img/paper.png" alt="Paper"></button>
-            <button id="scissors" class="btn"><img src="img/scissors.png" alt="Scissors"></button>
+            <button id="rock" class="btn"><img class="img" src="img/rock.png" alt="Rock"></button>
+            <button id="paper" class="btn"><img class="img" src="img/paper.png" alt="Paper"></button>
+            <button id="scissors" class="btn"><img class="img" src="img/scissors.png" alt="Scissors"></button>
         </div>
     </div>
     
@@ -112,7 +161,7 @@
         button.onmousedown = e => {
             document.getElementById("default").innerHTML = " ";
             btnRock.addEventListener('click', function() {
-            userChoice = url('./images/rock.png');
+            userChoice = 'rock';
             document.getElementById("playerChoice").innerHTML = "Player choice: " + userChoice;
         });
 
